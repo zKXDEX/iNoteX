@@ -1,5 +1,4 @@
 import {createNote, deleteNote, getNotes, readNote, writeNote} from '@/lib'
-import {  app, shell, BrowserWindow, ipcMain, BrowserViewConstructorOptions } from 'electron'
 const electron = require('electron')
 import { join } from 'path'
 const glasstron = require('glasstron');
@@ -87,9 +86,9 @@ electron.app.whenReady().then(() => {
   electron.ipcMain.handle('deleteNote', (_, ...args: Parameters<DeleteNote>) => deleteNote(...args))
 
 
-  ipcMain.on('closeApp', () => electron.app.quit())
-  ipcMain.on('minimizeApp', () => electron.BrowserWindow.getFocusedWindow()?.minimize())
-  ipcMain.on('maximizeApp', () => {
+  electron.ipcMain.on('closeApp', () => electron.app.quit())
+  electron.ipcMain.on('minimizeApp', () => electron.BrowserWindow.getFocusedWindow()?.minimize())
+  electron.ipcMain.on('maximizeApp', () => {
     const win = electron.BrowserWindow.getFocusedWindow()
     if (win?.isMaximized()) {
       win.unmaximize()
@@ -97,9 +96,6 @@ electron.app.whenReady().then(() => {
       win?.maximize()
     }
   })
-  // ipcMain.on('asynchronous-message', (event, arg) => {
-  //   console.log("heyyyy",arg)
-  // })
 
 
 

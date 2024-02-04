@@ -11,7 +11,13 @@ import { IoMdCloseCircle } from "react-icons/io";
 import { FiMaximize } from "react-icons/fi";
 import { TbArrowsDiagonalMinimize2 } from "react-icons/tb";
 
-export const TitleBarRows = ({closeAction, minimizeAction, maximizeAction}) => {
+interface TitleBarRowsProps {
+  closeAction: () => void;
+  minimizeAction: () => void;
+  maximizeAction: () => void;
+}
+
+export const TitleBarRows: React.FC<TitleBarRowsProps> = ({ closeAction, minimizeAction, maximizeAction }) => {
 
   console.log(titlebarConfig.titlebar.style)
   const titlebarStyle = titlebarConfig.titlebar.style
@@ -84,4 +90,5 @@ export const TitleBarRows = ({closeAction, minimizeAction, maximizeAction}) => {
     </div>
   )
 
+  return null;
 }

@@ -1,6 +1,6 @@
-# notes-mark
+# notexVerse
 
-An Electron application with React and TypeScript
+notexVerse is a simple **note-tracking app** that uses **Markdown** syntax to format your notes.
 
 ## Recommended IDE Setup
 

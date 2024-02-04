@@ -17,7 +17,7 @@ function createWindow(): void {
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {icon}),
     center: true,
-    title: 'NotesMark',
+    title: 'notexVerse',
     frame: false,
     vibrancy: 'under-window',
     visualEffectState: 'active',

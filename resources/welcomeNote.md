@@ -1,5 +1,5 @@
 
-## Welcome to NoteMark
+## Welcome to notexVerse app
 
   
 

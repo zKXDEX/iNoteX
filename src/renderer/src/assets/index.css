@@ -109,8 +109,8 @@ button.customizeButton{
   flex-direction: column;
   /* background-color: #202127; */
   border: 1px solid #20212749;
-  height: 20vh;
-  width: 40vh;
+  height: 200px;
+  width: 400px;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;

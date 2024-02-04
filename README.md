@@ -2,6 +2,8 @@
 
 notexVerse is a simple **note-tracking app** that uses **Markdown** syntax to format your notes.
 
+![notexVerseImage](notexVerse.png)
+
 ## Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)

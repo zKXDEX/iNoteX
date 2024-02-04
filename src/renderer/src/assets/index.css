@@ -1,0 +1,136 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  #root {
+    @apply h-full;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;600;700&display=swap');
+
+  html,
+  body {
+    @apply h-full;
+
+    @apply select-none;
+
+    @apply bg-transparent;
+
+    @apply font-mono antialiased text-white;
+
+    @apply overflow-hidden;
+  }
+
+  header {
+    -webkit-app-region: drag;
+  }
+
+  button {
+    -webkit-app-region: no-drag;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#555] rounded-md;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+}
+
+h1, *{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.titlebar button{
+  transition: scale 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.titlebar button:hover{
+  scale: 1.2;
+}
+
+.versions {
+  position: absolute;
+  bottom: 30px;
+  margin: 0 auto;
+  padding: 15px 0;
+  font-family: 'Menlo', 'Lucida Console', monospace;
+  display: inline-flex;
+  overflow: hidden;
+  align-items: center;
+  border-radius: 22px;
+  background-color: #202127;
+  backdrop-filter: blur(24px);
+}
+
+.versions li {
+  display: block;
+  float: left;
+  border-right: 1px solid var(--ev-c-gray-1);
+  padding: 0 20px;
+  font-size: 14px;
+  line-height: 14px;
+  opacity: 0.8;
+  &:last-child {
+    border: none;
+  }
+}
+
+.containerIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.contentSection{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.contentSection p{
+  font-size: 12px;
+  font-weight: 600;
+}
+
+button.customizeButton{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  /* background-color: #202127; */
+  border: 1px solid #20212749;
+  height: 20vh;
+  width: 40vh;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button.customizeButton .sectionbuttons{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.customizeButton:hover{
+  background-color: #2f3136;
+  border: 1px solid #2f3136;
+}
+

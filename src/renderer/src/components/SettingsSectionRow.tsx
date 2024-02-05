@@ -10,7 +10,7 @@ export const SettingsSectionRow = () => {
       <div className="flex justify-start mx-10">
         <div className="w-auto h-64 flex flex-col justify-center items-start gap-3 mr-[2vh]">
           <img src={logo} alt="logo" className="w-20 h-20"/>
-          <h1 className="text-4xl">notexVerse</h1>
+          <h1 className="text-4xl">iNoteX</h1>
           <VersionsSection/>
 
         </div>

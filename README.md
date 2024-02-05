@@ -1,8 +1,8 @@
-# notexVerse
+# iNoteX
 
-notexVerse is a simple **note-tracking app** that uses **Markdown** syntax to format your notes.
+iNoteX is a simple **note-tracking app** that uses **Markdown** syntax to format your notes.
 
-![notexVerseImage](notexVerse.png)
+![iNoteXImage](iNoteX.png)
 
 ## Recommended IDE Setup
 

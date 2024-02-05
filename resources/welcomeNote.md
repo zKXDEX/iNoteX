@@ -1,9 +1,9 @@
 
-## Welcome to notexVerse app
+## Welcome to iNoteX app
 
   
 
-notexVerse is a simple **note-tracking app** that uses **Markdown** syntax to format your notes.
+iNoteX is a simple **note-tracking app** that uses **Markdown** syntax to format your notes.
 
 You can create your first note by clicking on top-left icon on the sidebar, or delete one by clicking on top right icon.
 

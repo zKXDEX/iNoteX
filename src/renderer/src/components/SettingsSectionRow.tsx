@@ -1,4 +1,4 @@
-import {VersionsSection, InfoApplication} from '@/components'
+import {VersionsSection, InfoApplication, ApplicationSettings} from '@/components'
 import {CustomizeTitleBar} from '@/components/Settings'
 import logo from '../../../../resources/icon.png'
 import { TbInfoTriangleFilled } from "react-icons/tb";
@@ -17,6 +17,8 @@ export const SettingsSectionRow = () => {
         <InfoApplication/>
       </div>
       <div className="flex justify-start flex-col mx-10 h-auto">
+      <h1 className='text-2xl'>Application settings</h1>
+          <ApplicationSettings/>
         <h1 className='text-2xl'>Application cutomization</h1>
           <CustomizeTitleBar/>
       </div>

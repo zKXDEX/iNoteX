@@ -1,5 +1,10 @@
 {
   "titlebar": {
     "style": "mac"
+  },
+  "font": {
+    "size": 14,
+    "family": "Arial"
   }
+
 }

@@ -8,7 +8,14 @@
     @apply h-full;
   }
 
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;600;700&display=swap');
+  /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;600;700&display=swap'); */
+
+  /* import font family from file */
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('../assets/fonts/OpenSans.ttf');
+  }
 
   html,
   body {
@@ -44,8 +51,9 @@
   }
 }
 
-h1, *{
-  font-family: 'Open Sans', sans-serif;
+*{
+  font-family: 'Open Sans';
+  /* font-weight: 600; */
 }
 
 .titlebar button{
@@ -134,3 +142,7 @@ button.customizeButton:hover{
   border: 1px solid #2f3136;
 }
 
+.gradient-color{
+  background: linear-gradient(225deg, #FFC107 0%, #FF9800 100%);
+  border-radius: 5px ;
+}

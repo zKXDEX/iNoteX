@@ -4,7 +4,7 @@ const fontsTb = [
   {
     id: 1,
     name: 'Open Sans',
-    style: 'Open Sans',
+    style: 'Open Sans, sans-serif',
 
   },
   {
@@ -88,7 +88,7 @@ const fontsTb = [
 export const ApplicationSettings = () => {
   return (
     <div className="flex flex-row items-center gap-3 mt-5 mb-10">
-      <SelectMenu Option="Font " Items={fontsTb}/>
+      <SelectMenu TitleOption="Font " Items={fontsTb}/>
     </div>
   );
 };

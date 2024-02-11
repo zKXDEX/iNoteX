@@ -1,10 +1,12 @@
 import {createNote, deleteNote, getNotes, readNote, writeNote} from '@/lib'
 const electron = require('electron')
-import { join } from 'path'
+import path, { join } from 'path'
+const fs = require('fs');
 const glasstron = require('glasstron');
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { CreateNote, DeleteNote, GetNotes, ReadNote, WriteNote } from '@shared/types'
 import icon from '../../resources/icon.png?asset'
+
 
 electron.app.commandLine.appendSwitch("enable-transparent-visuals");
 function createWindow(): void {
@@ -47,7 +49,25 @@ function createWindow(): void {
 
   DwmEnableBlurBehindWindow(mainWindow.getNativeWindowHandle(), true)
 
+
+
+
   mainWindow.on('ready-to-show', () => {
+    if (process.env.APPDATA) {
+      const sourcePath = path.join(__dirname, '../../resources', 'settings.json');
+      const destinationPath = path.join(process.env.APPDATA, 'iNoteX', 'settings.json');
+      if (!fs.existsSync(destinationPath)) {
+        fs.copyFile(sourcePath, destinationPath, (err) => {
+          if (err) {
+            console.error('Error al copiar el archivo:', err);
+          } else {
+            console.log('Archivo copiado con éxito.');
+          }
+        });
+      }
+
+    }
+
     mainWindow.show()
   })
 
@@ -85,6 +105,22 @@ electron.app.whenReady().then(() => {
   electron.ipcMain.handle('createNote', (_, ...args: Parameters<CreateNote>) => createNote(...args))
   electron.ipcMain.handle('deleteNote', (_, ...args: Parameters<DeleteNote>) => deleteNote(...args))
 
+
+  electron.ipcMain.on('updateSettings', (event, fontFamily) => {
+    try {
+      const settingsFilePath = path.join(electron.app.getPath("userData"), 'settings.json');
+      console.log('settingsFilePath:', settingsFilePath);
+      const settings = JSON.parse(fs.readFileSync(settingsFilePath, 'utf8'));
+      console.log('settings before:', settings);
+      settings.font.family = fontFamily;
+      console.log('settings after:', settings);
+      fs.writeFileSync(settingsFilePath, JSON.stringify(settings, null, 2));
+      event.reply('updateSettingsResponse', 'Settings updated successfully');
+    } catch (error) {
+      console.error('Error updating settings:', error);
+      event.reply('updateSettingsResponse', 'Error updating settings');
+    }
+  });
 
   electron.ipcMain.on('closeApp', () => electron.app.quit())
   electron.ipcMain.on('minimizeApp', () => electron.BrowserWindow.getFocusedWindow()?.minimize())

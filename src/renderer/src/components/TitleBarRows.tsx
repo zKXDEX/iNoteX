@@ -19,14 +19,14 @@ interface TitleBarRowsProps {
 
 export const TitleBarRows: React.FC<TitleBarRowsProps> = ({ closeAction, minimizeAction, maximizeAction }) => {
 
-  console.log(titlebarConfig.titlebar.style)
+  // console.log(titlebarConfig.titlebar.style)
   const titlebarStyle = titlebarConfig.titlebar.style
 
   if (titlebarStyle === 'mac') return (
     <div className="relative  inset-0 h-8 w-[250px] h-[100vh + 10px]" >
-      <div className={twMerge('absolute inset-0 flex justify-between items-center px-2')}>
+      <div className={twMerge('absolute inset-0 flex justify-between items-center px-2 bar_s')}>
 
-        <div className="flex space-x-2 ms-2 titlebar">
+        <div className="flex space-x-2 ms-2 titlebar ">
           <button className="w-3 h-3 rounded-full bg-red-500/100" datatype='close' id='closebtn' onClick={closeAction}/>
           <button className="btnMinimize w-3 h-3 rounded-full bg-yellow-500/100" datatype='minimize' id='minimizebtn' onClick={minimizeAction} />
           <button className="btnMaximize w-3 h-3 rounded-full bg-green-500/100" datatype='maximize' id='maximizebtn' onClick={maximizeAction} />
@@ -38,7 +38,7 @@ export const TitleBarRows: React.FC<TitleBarRowsProps> = ({ closeAction, minimiz
 
   if (titlebarStyle === 'win') return (
     <div className="relative  inset-0 h-8 w-[250px] h-[100vh + 10px]" >
-      <div className={twMerge('absolute inset-0 flex justify-between items-center px-2')}>
+      <div className={twMerge('absolute inset-0 flex justify-between items-center px-2 bar_s')}>
 
         <div className="flex space-x-2 ms-2 titlebar">
           <button className="w-4 h-4" datatype='close' id='closebtn' onClick={closeAction}>
@@ -58,7 +58,7 @@ export const TitleBarRows: React.FC<TitleBarRowsProps> = ({ closeAction, minimiz
 
   if (titlebarStyle === 'lin') return (
     <div className="relative  inset-0 h-8 w-[250px] h-[100vh + 10px]" >
-      <div className={twMerge('absolute inset-0 flex justify-between items-center px-2')}>
+      <div className={twMerge('absolute inset-0 flex justify-between items-center px-2 bar_s')}>
 
         <div className="flex space-x-2 ms-2 titlebar">
           <button className="w-4 h-4" datatype='close' id='closebtn' onClick={closeAction}>
@@ -78,9 +78,9 @@ export const TitleBarRows: React.FC<TitleBarRowsProps> = ({ closeAction, minimiz
 
   if (!(titlebarStyle === 'mac' || titlebarStyle === 'lin' || titlebarStyle === 'win')) return (
     <div className="relative  inset-0 h-8 w-[250px] h-[100vh + 10px]" >
-      <div className={twMerge('absolute inset-0 flex justify-between items-center px-2')}>
+      <div className={twMerge('absolute inset-0 flex justify-between items-center px-2 bar_s')}>
 
-        <div className="flex space-x-2 ms-2 titlebar">
+        <div className="flex space-x-2 ms-2 titlebar ">
           <button className="w-3 h-3 rounded-full bg-red-500/100" datatype='close' id='closebtn' onClick={closeAction}/>
           <button className="btnMinimize w-3 h-3 rounded-full bg-yellow-500/100" datatype='minimize' id='minimizebtn' onClick={minimizeAction} />
           <button className="btnMaximize w-3 h-3 rounded-full bg-green-500/100" datatype='maximize' id='maximizebtn' onClick={maximizeAction} />

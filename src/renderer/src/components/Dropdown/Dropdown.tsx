@@ -1,6 +1,8 @@
 import { Fragment, useRef, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import Config from '../../../../../resources/settings.json'
+
 
 interface Items {
   id: number
@@ -9,7 +11,7 @@ interface Items {
 }
 
 interface SelectMenuProps{
-  Option: string,
+  TitleOption: string,
   Items: Items[]
 }
 
@@ -17,26 +19,32 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function SelectMenu({ Option, Items }: SelectMenuProps) {
+export default function SelectMenu({ TitleOption, Items }: SelectMenuProps) {
   const [selected, setSelected] = useState(Items.length > 0 ? Items[0] : null);
   const styleRef = useRef<HTMLStyleElement>();
+  const [configStyle, setconfigStyle] = useState(Config.font.family)
+
+  const saveSelectedFontToSettings = (fontStyle: string) => {
+
+    window.electron.ipcRenderer.send('updateSettings', fontStyle);
+  }
 
 
   const handleClick = (item) => {
     setSelected(item);
-    console.log(`${item.style} !important`);
     if (!styleRef.current) {
       styleRef.current = document.createElement('style');
       document.head.appendChild(styleRef.current);
     }
     styleRef.current.innerHTML = `* { font-family: ${item.style} !important; }`;
+    saveSelectedFontToSettings(item.name)
   };
 
   return (
     <Listbox value={selected} onChange={setSelected}>
       {({ open }) => (
         <>
-          <Listbox.Label className="block text-zinc-300 mr-28">{Option}</Listbox.Label>
+          <Listbox.Label className="block text-zinc-300 mr-28">{TitleOption}</Listbox.Label>
           <div className="relative mt-2 w-56">
             <Listbox.Button className="relative w-full cursor-default rounded-md bg-black/35 py-1.5 pl-3 pr-10 text-left text-gray-100 shadow-sm ring-1 ring-inset ring-black/30 focus:outline-none focus:ring-2  sm:text-sm sm:leading-6">
               <span className="flex items-center">
@@ -58,7 +66,7 @@ export default function SelectMenu({ Option, Items }: SelectMenuProps) {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-black/90 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              <Listbox.Options className="absolute z-10 mt-1 backdrop max-h-56 w-full overflow-auto rounded-md bg-black/90 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                 {Items.map((item) => (
                   <Listbox.Option
                     key={item.id}

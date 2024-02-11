@@ -1,5 +1,5 @@
 appId: com.electron.app
-productName: app
+productName: iNoteX
 directories:
   buildResources: build
 files:
@@ -9,10 +9,15 @@ files:
   - '!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
   - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
   - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+extraResources:
+  - from: ./resources
+    to: ./resources
+
 asarUnpack:
   - 'resources/**'
 win:
-  executableName: app
+  executableName: iNoteX
+  icon: ./build/icon.ico
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
